@@ -1,0 +1,24 @@
+{
+  "name": "jrdevs-todoappmvc-g2",
+  "version": "1.0.0",
+  "description": "ToDo App MVC de Desarrolladores Jr - Grupo 2",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manuel-1994/jrdevs-todoappmvc-g2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manuel-1994/jrdevs-todoappmvc-g2/issues"
+  },
+  "homepage": "https://github.com/manuel-1994/jrdevs-todoappmvc-g2#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15"
+  }
+}
