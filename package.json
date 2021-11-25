@@ -4,7 +4,7 @@
   "description": "ToDo App MVC de Desarrolladores Jr - Grupo 2",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",

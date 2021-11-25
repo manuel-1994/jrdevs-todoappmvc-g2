@@ -1,6 +1,6 @@
 const express = require('express')
+const {port} = require('./config')
 const app = express()
-const port = 4000
 //Middleware
 app.use(express.json())
 
