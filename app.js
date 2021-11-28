@@ -1,7 +1,7 @@
 const express = require('express')
 const {port} = require('./config')
-const path = require('path')
-const loginRouter = require('./routers/login.js')
+const auth = require('./routers/auth')
+const home = require('./routers/home')
 const app = express()
 
 //Middleware
@@ -11,10 +11,8 @@ app.set('view engine', 'pug')
 //Connection Db
 
 //Routes
-app.get('/', function (req, res) {
-  res.render('home');
-});
-app.use('/login', loginRouter);
+home(app)
+auth(app)
 
 //Server Init
 app.listen(port, () => {
