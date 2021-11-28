@@ -1,7 +1,10 @@
 doctype html
 html
-  head
-    title= 'ToDo Task'
-  body
-    h1= 'ToDo Task'
-    div(id='todo-list')
+    head
+        title= 'ToDo Task'
+        link(rel='stylesheet', href='/css/home.css', type='text/css')
+    body
+        div(id='app')
+            h1(id='header') ToDo Task
+            div(id='todo-list')
+            div(id='todo-editor')
