@@ -5,9 +5,12 @@ const home = require('./routers/home')
 const app = express()
 
 //Middleware
+app.use(express.static('public'));
 app.use(express.json())
+
 // set template engine
 app.set('view engine', 'pug')
+
 //Connection Db
 
 //Routes
