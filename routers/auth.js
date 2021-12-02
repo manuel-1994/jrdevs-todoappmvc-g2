@@ -7,6 +7,6 @@ const auth = (app) =>{
   router.get('/login', (req, res) => {
     res.status(200).render('login')
   })
-  
+
 }
 module.exports = auth
