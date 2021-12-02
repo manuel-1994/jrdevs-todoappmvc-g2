@@ -1,0 +1,36 @@
+@import url('global.css');
+
+body {
+	background-color: var(--color-bg);
+	height: 100%;
+}
+
+#form-login {
+	display: block;
+	background-color: var(--color-surface);
+	border-radius: var(--main-radius);
+	padding: var(--main-padding);
+	height: 80%;
+}
+
+.title {
+	font-size: var(--font-size-big);
+}
+
+.field {
+	display: block;
+	font-size: var(--font-size-normal);
+	margin-right: 1em;
+}
+
+input {
+	background-color: var(--color-bg);
+	border: 1px solid var(--color-bg-20);
+	border-radius: var(--main-radius);
+}
+
+input:focus {
+	border: 1px solid var(--color-hi);
+	border-radius: var(--main-radius);
+	outline: none;
+}
