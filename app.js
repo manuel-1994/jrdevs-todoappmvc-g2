@@ -4,6 +4,7 @@ const {port} = require('./config')
 const auth = require('./routers/auth')
 const home = require('./routers/home')
 const users = require('./routers/users')
+const tasks = require('./routers/tasks')
 const app = express()
 
 //Middleware
@@ -19,6 +20,7 @@ connection()
 home(app)
 auth(app)
 users(app)
+tasks(app)
 
 //Server Init
 app.listen(port, () => {
