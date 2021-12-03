@@ -1,18 +1,46 @@
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
 const userController = require('./users.controller')
 
+const hashPassword = async (password) =>{
+  const salt = await bcrypt.genSalt(10)
+  const hash = await bcrypt.hash(password,salt)
+
+  return hash
+}
+
 const login = async (email, password) =>{
-  console.log(email);
   const user = await userController.getUser(email)
   if(user){
-    if(password === user.password){
-      const token = jwt.sign({email, password}, '12345')
+    const isPassword= await bcrypt.compare(password, user.password)
+    if(isPassword){
+      const token = jwt.sign({email}, '12345')
       return {token, user, sucess: true}
     }
   }
   return {message:'Credenciales incorrectas', sucess: false}
 }
 
+const register = async (username, email, passwordOrigin) =>{
+  const password = await hashPassword(passwordOrigin)
+  const user = await userController.createUser({username,email,password})
+  if(user){
+    return {message: 'Registro exitoso', sucess: true, user}
+  }
+  return {message:'Error al registrar', sucess: false}
+}
+
+const addRol = async (id,rol) =>{
+  const user = await userController.updateUser(id,{rol})
+  
+  if(user){
+    return {message: 'Rol agregado', sucess: true, user}
+  }
+  return {message:'Error al agregar rol', sucess: false}
+}
+
 module.exports = {
-  login
+  login,
+  register,
+  addRol
 }
