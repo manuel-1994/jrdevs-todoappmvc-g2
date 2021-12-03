@@ -5,10 +5,10 @@ html
 		link(rel='stylesheet', href='css/login.css')
 	body
 		div(id='greeting')
-		form(id='form-login')
+		form(id='form-login', action='/login', method='post')
 			div(class='title') Login
-			label(class='field') User
-				input
+			label(class='field') email
+				input(name='email' type='email')
 			label(class='field') Password
-				input
-			button(type='submit') ingresar
+				input(name='password' type='password')
+			input(type='submit' value='ingresar')
