@@ -5,6 +5,7 @@ const {Schema} = mongoose
 const taskSchema = new Schema({
   title: String,
   description: String,
+  created_at: String,
   created_by: String
 })
 

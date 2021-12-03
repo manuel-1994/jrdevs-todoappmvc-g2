@@ -5,7 +5,7 @@ const auth = (app) =>{
   app.use('/',router)
 
   router.get('/login', (req, res) => {
-    res.status(200).render('login')
+    res.render('login')
   })
 
 }
