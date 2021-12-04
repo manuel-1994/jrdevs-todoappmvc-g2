@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+const config = require('../config')
 const userController = require('./users.controller')
 
 const hashPassword = async (password) =>{
@@ -14,7 +15,7 @@ const login = async (email, password) =>{
   if(user){
     const isPassword= await bcrypt.compare(password, user.password)
     if(isPassword){
-      const token = jwt.sign({email}, '12345')
+      const token = jwt.sign({email}, config.jwt_secret)
       return {token, user, sucess: true}
     }
   }
