@@ -26,3 +26,7 @@ body {
 	min-height: 80vh;
 	overflow-y: visible;
 }
+
+#editor {
+	display: none;
+}
