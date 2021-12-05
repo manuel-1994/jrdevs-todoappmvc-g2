@@ -1,10 +1,11 @@
 const express = require('express')
 const usersController = require('../controllers/users.controller')
+const {verifyTokenAdmin} = require('../middleware/authValidation')
 
 const users = (app) =>{
   const router = express.Router()
 
-  app.use('/users', router)
+  app.use('/users',verifyTokenAdmin, router)
 
   router.get('/', async (req, res)=>{
     const data = await usersController.getUsers()

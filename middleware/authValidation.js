@@ -2,17 +2,17 @@ const jwt = require('jsonwebtoken')
 const config = require("../config")
 const obtainRol=(token, validation, req, res, next)=>{
   if (!token){
-    return res.status(400).json({message: 'Se necesita un token para acceder'})
+    return  res.status(403).json({message: 'Se necesita un token para acceder'})
   }
 
   try {
     const decodedToken = jwt.verify(token, config.jwt_secret)
     const {rol} = decodedToken
     if(validation==='general'){
-      req.usuario = decodedToken
+      req.user = decodedToken
       return next()
     }else if(validation==='admin' && rol==='admin'){
-      req.usuario = decodedToken
+      req.user = decodedToken
       return next()
     }
   } catch (error) {

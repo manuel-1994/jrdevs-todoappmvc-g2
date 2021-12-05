@@ -5,10 +5,11 @@ const getTasks = async ()=>{
   return tasks || []
 }
 
-const getTask = async (created_by)=>{
-  const task = await TaskModel.findOne({created_by}).exec()
-  return task || {}
+const getTasksByUser = async (created_by)=>{
+  const tasks = await TaskModel.find({created_by})
+  return tasks || []
 }
+
 
 const createTask = async (title, description, created_at, created_by)=>{
   const newTask = await TaskModel.create({title, description, created_at, created_by})
@@ -26,7 +27,7 @@ const deleteTask = async (id) =>{
 }
 module.exports={
   getTasks,
-  getTask,
+  getTasksByUser,
   createTask,
   updateTask,
   deleteTask

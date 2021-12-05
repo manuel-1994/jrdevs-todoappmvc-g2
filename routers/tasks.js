@@ -1,25 +1,25 @@
 const express = require('express')
 const taskController = require('../controllers/task.controller')
+const { verifyToken } = require('../middleware/authValidation')
 
 const tasks = (app)=>{
   const router = express.Router()
-  app.use('/task',router)
+  
+  app.use('/task',verifyToken,router)
 
   router.get('/', async (req, res) =>{
-    const tasks = await taskController.getTasks()
+    const {rol,username} = req.user
+    
+    const tasks = rol==="admin"
+    ?await taskController.getTasks()
+    :await taskController.getTasksByUser(username)
     res.status(200).json(tasks)
-  })
-
-  router.get('/:username', async (req, res) =>{
-    const username = req.params.created_by 
-    const task = await taskController.getTask(username)
-    res.status(200).json(task)
   })
 
   router.post('/', async (req, res) =>{
     const {title, description,} = req.body
     const created_at = new Date().toLocaleString()
-    const created_by = 'hola mundo'
+    const created_by = req.user.username
     const newTask= await taskController.createTask(title, description,created_at,created_by)
 
     res.status(201).json(newTask)

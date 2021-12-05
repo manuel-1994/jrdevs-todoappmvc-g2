@@ -1,5 +1,6 @@
 const express = require('express')
 const authController = require('../controllers/auth.controller')
+const {verifyTokenAdmin} = require('../middleware/authValidation')
 
 const auth = (app) =>{
   const router = express.Router()
@@ -15,7 +16,7 @@ const auth = (app) =>{
       if(result.sucess){
         return res.cookie('token',result.token,{httpOnly:true})
         .status(200)
-        .json({nombre:result.user.username})
+        .json({username:result.user.username})
       }
       return res.status(400).json(result.message)
   })
@@ -29,7 +30,7 @@ const auth = (app) =>{
     return res.status(400).json(result.message)
   })
 
-  router.put('/rol/:id', async (req, res)=>{
+  router.put('/rol/:id',verifyTokenAdmin, async (req, res)=>{
     const {rol}= req.body
     const id = req.params.id
     const result = await authController.addRol(id,rol)

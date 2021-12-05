@@ -15,7 +15,7 @@ const login = async (email, password) =>{
   if(user){
     const isPassword= await bcrypt.compare(password, user.password)
     if(isPassword){
-      const token = jwt.sign({email}, config.jwt_secret)
+      const token = jwt.sign({email,username:user.username, rol:user.rol}, config.jwt_secret)
       return {token, user, sucess: true}
     }
   }
