@@ -6,7 +6,10 @@ const userSchema = new Schema({
   username: String,
   email: String,
   password: String,
-  rol: String
+  rol: {
+    type: String,
+    default: "user"
+  }
 })
 
 //model

@@ -8,7 +8,7 @@ const obtainRol=(token, validation, req, res, next)=>{
   try {
     const decodedToken = jwt.verify(token, config.jwt_secret)
     const {rol} = decodedToken
-    if(validation==='general'){
+    if(validation==='user'){
       req.user = decodedToken
       return next()
     }else if(validation==='admin' && rol==='admin'){
@@ -23,7 +23,7 @@ const obtainRol=(token, validation, req, res, next)=>{
 
 const verifyToken = (req,res,next) =>{
   const {token}= req.cookies
-  obtainRol(token,'general',req,res,next)
+  obtainRol(token,'user',req,res,next)
 }
 
 const verifyTokenAdmin = (req,res,next) =>{
