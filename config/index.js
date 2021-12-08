@@ -1,7 +1,12 @@
+require('dotenv').config()
+
 const config={
-  port: 3000,
-  password: 'e7pMtTRRNgNAQhGJ',
-  jwt_secret: '12345'
+  dev: process.env.MODE === 'dev',
+  port: process.env.PORT || 4000,
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  jwt_secret: process.env.JWT_SECRET
 }
 
 module.exports= config

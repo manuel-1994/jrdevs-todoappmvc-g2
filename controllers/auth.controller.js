@@ -23,12 +23,13 @@ const login = async (email, password) =>{
 }
 
 const register = async (username, email, passwordOrigin) =>{
-  const password = await hashPassword(passwordOrigin)
-  const user = await userController.createUser({username,email,password})
-  if(user){
-    return {message: 'Registro exitoso', sucess: true, user}
+  const validUser = await userController.validateUser({username, email, password: passwordOrigin})
+  if(validUser.success){
+    const password = await hashPassword(passwordOrigin)
+    const user = await userController.createUser({...validUser.data, password})
+    return user
   }
-  return {message:'Error al registrar', sucess: false}
+  return validUser
 }
 
 const addRol = async (id,rol) =>{
