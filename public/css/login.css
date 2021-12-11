@@ -8,8 +8,8 @@ body {
 #form-login {
 	display: block;
 	background-color: var(--color-surface);
-	border-radius: var(--main-radius);
-	padding: var(--main-padding);
+	border-radius: var(--size-radius);
+	padding: var(--size-padding);
 	height: 80%;
 }
 
@@ -26,11 +26,11 @@ body {
 input {
 	background-color: var(--color-bg);
 	border: 1px solid var(--color-bg-20);
-	border-radius: var(--main-radius);
+	border-radius: var(--size-radius);
 }
 
 input:focus {
 	border: 1px solid var(--color-hi);
-	border-radius: var(--main-radius);
+	border-radius: var(--size-radius);
 	outline: none;
 }

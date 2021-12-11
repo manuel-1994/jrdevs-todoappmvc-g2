@@ -4,9 +4,9 @@
 	--color-surface: #ffffff;
 	--color-hi: #228ae7;
 	--color-black: #303030;
-	--main-radius: 1em;
-	--main-margin: 1em;
-	--main-padding: 1em;
+	--size-radius: 1em;
+	--size-margin: 1em;
+	--size-padding: 1em;
 	--font-size-big: 2em;
 	--font-size-medium: 1.5em;
 	--font-size-normal: 1em;
