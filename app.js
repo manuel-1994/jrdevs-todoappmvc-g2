@@ -23,6 +23,11 @@ users(app)
 tasks(app)
 
 //Server Init
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server up in http://localhost:${port}`);
+})
+
+process.on('unhandledRejection', (err,promise)=>{
+  console.log("Error", err.message);
+  server.close(()=>process.exit(1));
 })

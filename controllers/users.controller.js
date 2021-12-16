@@ -5,8 +5,8 @@ const getUsers = async () =>{
   return users || []
 }
 
-const getUser= async ({email, username}) => {
-  const user = await UserModel.findOne(email?{email}:{username}).exec()
+const getUser= async ({email, username,_id}) => {
+  const user = await UserModel.findOne(email?{email}:username?{username}:{_id}).exec()
   return user
 }
 

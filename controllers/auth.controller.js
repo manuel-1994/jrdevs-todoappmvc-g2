@@ -6,16 +6,19 @@ const userController = require('./users.controller')
 const hashPassword = async (password) =>{
   const salt = await bcrypt.genSalt(10)
   const hash = await bcrypt.hash(password,salt)
-
   return hash
 }
 
 const login = async (email, password) =>{
-  const user = await userController.getUser(email)
+  const user = await userController.getUser({email})
   if(user){
     const isPassword= await bcrypt.compare(password, user.password)
     if(isPassword){
-      const token = jwt.sign({email,username:user.username, rol:user.rol}, config.jwt_secret)
+      const token = jwt.sign({
+        email,
+        id:user.id,
+        rol:user.rol
+      }, config.jwt_secret)
       return {token, user, sucess: true}
     }
   }

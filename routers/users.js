@@ -12,9 +12,9 @@ const users = (app) =>{
     res.status(200).json(data)
   })
 
-  router.get('/:email', async (req, res)=>{
-    const email = req.params.email
-    const user = await usersController.getUser(email)
+  router.get('/:id', async (req, res)=>{
+    const _id = req.params.id
+    const user = await usersController.getUser({_id})
     res.status(200).json(user)
   } )
 
