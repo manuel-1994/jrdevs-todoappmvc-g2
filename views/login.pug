@@ -3,6 +3,7 @@ html
 	head
 		title Todo app - Login
 		link(rel='stylesheet', href='css/login.css')
+		script(src='js/login.js')
 	body
 		div(id='greeting')
 		form(id='form-login', action='/login', method='post')
@@ -11,4 +12,4 @@ html
 				input(name='email' type='email')
 			label(class='field') Password
 				input(name='password' type='password')
-			input(type='submit' value='ingresar')
+			input(type='submit' class='button' value='ingresar')
